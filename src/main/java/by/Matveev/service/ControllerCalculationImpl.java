@@ -1,11 +1,13 @@
-package by.Mayveev.service;
+package by.Matveev.service;
+
+import by.Matveev.entity.Operation;
 
 public class ControllerCalculationImpl implements ControllerCalculation {
     @Override
-    public String getResult(int i1, int i2, String calculation) {
-        int result = 0;
+    public  Operation getResult(double i1, double i2, String calculation) {
+        double result = 0;
         switch (calculation){
-            case "add" : result=  i1 + i2;
+            case "add" : result =  i1 + i2;
                 break;
             case "sub": result = i1 - i2;
                 break;
@@ -14,7 +16,7 @@ public class ControllerCalculationImpl implements ControllerCalculation {
             case "div": result = i1 / i2;
                 break;
         }
-        String result1 = String.valueOf(result);
-        return result1;
+        Operation operation = new Operation(i1, i2, calculation, result);
+        return operation;
     }
 }

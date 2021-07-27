@@ -1,4 +1,4 @@
-package by.Mayveev.service.input;
+package by.Matveev.service.input;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,9 +17,9 @@ public class Input{
         return flag;
     }
 
-    public static boolean getInt(String i){
+    public static boolean getDouble(String i){
         boolean flag = false;
-        if(Pattern.matches("\\d", i )){
+        if(Pattern.matches("\\d", i)){
             flag = true;
         }
         return flag;
@@ -32,5 +32,9 @@ public class Input{
             flag = false;
         }
         return flag;
+    }
+
+    public static String getMessage(String message){
+        return message;
     }
 }
