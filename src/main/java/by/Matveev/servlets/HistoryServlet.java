@@ -1,6 +1,6 @@
 package by.Matveev.servlets;
 
-import by.Matveev.dao.RememberingInformation;
+import by.Matveev.dao.ListOperations;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +13,7 @@ import java.io.IOException;
 public class HistoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RememberingInformation rememberingInformation = new RememberingInformation();
+        ListOperations rememberingInformation = new ListOperations();
         if(req.getParameter("login") != null)
             resp.getWriter().println(rememberingInformation.getOperationByLogin(req.getParameter("login")));
         else if (req.getParameter("name") != null)

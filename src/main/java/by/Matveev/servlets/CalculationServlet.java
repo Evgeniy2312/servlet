@@ -2,8 +2,7 @@ package by.Matveev.servlets;
 
 import by.Matveev.entity.Operation;
 import by.Matveev.entity.User;
-import by.Matveev.service.ControllerCalculationImpl;
-import by.Matveev.dao.RememberingInformation;
+import by.Matveev.dao.ListOperations;
 import by.Matveev.service.MapOperations;
 
 import javax.servlet.ServletException;
@@ -23,6 +22,6 @@ public class CalculationServlet extends HttpServlet {
         Operation function = MapOperations.OPERATIONS_MAP.get(operation).getResult(Double.valueOf(i), Double.valueOf(i1));
         function.setUser((User) req.getSession().getAttribute("user"));
         resp.getWriter().println(function);
-        new RememberingInformation().getOperations().add(function);
+        new ListOperations().getOperations().add(function);
     }
 }

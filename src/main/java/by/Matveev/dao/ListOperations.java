@@ -7,7 +7,7 @@ import by.Matveev.service.input.Input;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RememberingInformation implements RememberingInformationDao {
+public class ListOperations implements RememberingInformationDao {
     private final static List<Operation> OPERATIONS = new ArrayList<>();
 
     @Override
