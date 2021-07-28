@@ -17,12 +17,12 @@ public class TestDataFilter extends HttpFilter {
         boolean flag = true;
         String i = req.getParameter("num1");
         if (!Input.getDouble(i)){
-            res.getWriter().println(Input.getMessage("You incorrectly entered first number, need to enter the whole number"));
+            res.getWriter().println(Input.getMessage("You incorrectly entered first number."));
             flag = false;
         }
         String i1 = req.getParameter("num2");
         if (!Input.getDouble(i1)){
-            res.getWriter().println(Input.getMessage("You incorrectly entered second number, need to enter the whole number"));
+            res.getWriter().println(Input.getMessage("You incorrectly entered second number."));
             flag = false;
         }
         String operation = req.getParameter("operation");

@@ -19,7 +19,7 @@ public class Input{
 
     public static boolean getDouble(String i){
         boolean flag = false;
-        if(Pattern.matches("\\d", i)){
+        if(Pattern.matches("^[0-9]*[.,]?[0-9]+$", i)){
             flag = true;
         }
         return flag;
