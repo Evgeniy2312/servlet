@@ -13,11 +13,17 @@ import java.io.IOException;
 public class HistoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getServletContext().getRequestDispatcher("/history.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ListOperations rememberingInformation = new ListOperations();
-        if(req.getParameter("login") != null)
-            resp.getWriter().println(rememberingInformation.getOperationByLogin(req.getParameter("login")));
+        if (req.getParameter("login") != null)
+            req.setAttribute("list", rememberingInformation.getOperationByLogin(req.getParameter("login")));
         else if (req.getParameter("name") != null)
-            resp.getWriter().println(rememberingInformation.getOperationByNameOfFunctions(req.getParameter("name")));
-        else resp.getWriter().println(rememberingInformation.getOperations());
+            req.setAttribute("list", rememberingInformation.getOperationByNameOfFunctions(req.getParameter("name")));
+        else req.setAttribute("list", rememberingInformation.getOperations());
+        req.getServletContext().getRequestDispatcher("/history.jsp").forward(req, resp);
     }
 }

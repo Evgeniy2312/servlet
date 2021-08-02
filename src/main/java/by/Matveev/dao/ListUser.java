@@ -7,12 +7,12 @@ import java.util.List;
 
 public class ListUser implements UserDao{
 
-    private static final List<User> USERS = new ArrayList<>();
+    private static final List<User> users = new ArrayList<>();
 
 
     @Override
     public List<User> getUser() {
-        return USERS;
+        return users;
     }
 
     @Override

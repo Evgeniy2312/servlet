@@ -15,8 +15,15 @@ import java.io.IOException;
 public class CheckUserFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
-        User user = (User) req.getSession().getAttribute("user");
-        if(user == null || req.getSession() == null) res.getWriter().println(Input.getMessage("You haven't authorized yet."));
-        else chain.doFilter(req, res);
+        if(req.getMethod().equals("GET")){
+            chain.doFilter(req, res);
+        }
+        if(req.getMethod().equals("POST")) {
+            User user = (User) req.getSession().getAttribute("user");
+            if (user == null || req.getSession() == null){
+                req.setAttribute("incorrect","You haven't authorized yet." );
+                req.getServletContext().getRequestDispatcher("/calculation.jsp").forward(req, res);
+            } else chain.doFilter(req, res);
+        }
     }
 }

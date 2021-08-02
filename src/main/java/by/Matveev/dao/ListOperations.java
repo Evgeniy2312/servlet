@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListOperations implements RememberingInformationDao {
-    private final static List<Operation> OPERATIONS = new ArrayList<>();
+    private final static List<Operation> operations = new ArrayList<>();
 
     @Override
     public List<Operation> getOperations() {
-        return OPERATIONS;
+        return operations;
     }
 
     @Override

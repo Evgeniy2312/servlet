@@ -14,13 +14,21 @@ import java.io.IOException;
 
 @WebServlet(name = "registration", urlPatterns = "/reg")
 public class RegistrationServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getServletContext().getRequestDispatcher("/registration.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         UserDao userDao = new ListUser();
         if (userDao.addUser(new User(login, password))) {
-            resp.getWriter().println(Input.getMessage("Registration passed successfully"));
-        } else resp.getWriter().println(Input.getMessage("This user has already existed"));
+            req.setAttribute("user", Input.getMessage("User with login " + login +  " passed registration successfully"));
+        }else req.setAttribute("incorrectData", Input.getMessage("This user has already existed"));
+        req.getServletContext().getRequestDispatcher("/registration.jsp").forward(req, resp);
     }
 }
+

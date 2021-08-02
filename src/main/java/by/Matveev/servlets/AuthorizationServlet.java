@@ -16,13 +16,21 @@ import java.io.IOException;
 public class AuthorizationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getServletContext().getRequestDispatcher("/registration.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         UserDao userDao = new ListUser();
         User user = new User(login,password);
         if(userDao.getUser().contains(user)) {
             req.getSession().setAttribute("user", user);
-            resp.getWriter().println(Input.getMessage("Authorisation passed successfully"));
-        }else resp.getWriter().println(Input.getMessage("This user hasn't existed yet.Need to register"));
+            resp.sendRedirect("/test");
+        }else {
+            req.setAttribute("incorrectData", Input.getMessage("This user hasn't existed yet.Need to register"));
+            req.getServletContext().getRequestDispatcher("/registration.jsp").forward(req, resp);
+        }
     }
 }
