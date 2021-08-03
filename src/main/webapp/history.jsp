@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix ="c" %>
 <html>
 <head>
     <title>Title</title>
@@ -31,6 +32,23 @@
 <form action="/test" method="get">
     <button>Back to calculation</button>
 </form>
-<p>${requestScope.list}</p>
+<table bgcolor="#7fffd4" border="2">
+    <tr>
+        <th>Number 1</th>
+        <th>Number 2</th>
+        <th>Operation</th>
+        <th>Login</th>
+        <th>Result</th>
+    </tr>
+    <c:forEach var ="operations" items="${requestScope.list}">
+        <tr>
+            <td>${operations.i1}</td>
+            <td>${operations.i2}</td>
+            <td>${operations.operation}</td>
+            <td>${operations.user.login}</td>
+            <td>${operations.result}</td>
+        </tr>
+    </c:forEach>
+</table>
 </body>
 </html>

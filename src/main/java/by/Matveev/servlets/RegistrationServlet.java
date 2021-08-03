@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "registration", urlPatterns = "/reg")
+    @WebServlet(name = "registration", urlPatterns = "/reg")
 public class RegistrationServlet extends HttpServlet {
 
     @Override

@@ -21,10 +21,10 @@ public class CalculationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String i = req.getParameter("num1");
-        String i1 = req.getParameter("num2");
+        Double i = Double.parseDouble(req.getParameter("num1"));
+        Double i1 =Double.parseDouble(req.getParameter("num2"));
         String operation = req.getParameter("operation");
-        Operation function = MapOperations.OPERATIONS_MAP.get(operation).getResult(Double.valueOf(i), Double.valueOf(i1));
+        Operation function = MapOperations.OPERATIONS_MAP.get(operation).getResult(i, i1);
         function.setUser((User) req.getSession().getAttribute("user"));
         req.setAttribute("operation", function.getResult());
         new ListOperations().getOperations().add(function);

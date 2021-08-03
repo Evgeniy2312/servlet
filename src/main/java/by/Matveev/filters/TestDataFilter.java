@@ -19,22 +19,13 @@ public class TestDataFilter extends HttpFilter {
         }
         if(req.getMethod().equals("POST")) {
             boolean flag = true;
-            String i = req.getParameter("num1");
-            if (!Input.getDouble(i)) {
-                req.setAttribute("incorrect", Input.getMessage("You incorrectly entered first number."));
-                flag = false;
-            }
-            String i1 = req.getParameter("num2");
-            if (!Input.getDouble(i1)) {
-                req.setAttribute("incorrect", Input.getMessage("You incorrectly entered second number."));
-                flag = false;
-            }
+            Double i1 = Double.parseDouble(req.getParameter("num2"));
             String operation = req.getParameter("operation");
             if (!Input.checkTypeOfCalculation(operation)) {
                 req.setAttribute("incorrect", Input.getMessage("You incorrectly entered, functions. Try again please"));
                 flag = false;
             }
-            if (!Input.divZero(Integer.parseInt(i1), operation)) {
+            if (!Input.divZero(i1, operation)) {
                 req.setAttribute("incorrect", Input.getMessage("Division by zero is prohibited"));
                 flag = false;
             }

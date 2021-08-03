@@ -17,15 +17,15 @@ public class Input{
         return flag;
     }
 
-    public static boolean getDouble(String i){
-        boolean flag = false;
-        if(Pattern.matches("^[0-9]*[.,]?[0-9]+$", i)){
-            flag = true;
-        }
-        return flag;
-    }
+//    public static boolean getDouble(String i){
+//        boolean flag = false;
+//        if(Pattern.matches("^[0-9]*[.,]?[0-9]+$", i)){
+//            flag = true;
+//        }
+//        return flag;
+//    }
 
-    public static boolean divZero(int i, String operation){
+    public static boolean divZero(double i, String operation){
         boolean flag = true;
         String div = "div";
         if(operation.equals(div) & i == 0 ){

@@ -12,8 +12,8 @@
 </head>
 <body>
 <form action="/test" method="post">
-    <input type="number" name="num1" placeholder="Number 1" required>
-    <input type="number" name="num2" placeholder="Number 2" required>
+    <input type="number" name="num1" placeholder="Number 1" required step="0.01">
+    <input type="number" name="num2" placeholder="Number 2" required step="0.01">
     <select name="operation" size="?" required>
         <option value="add">Addition</option>
         <option value="sub">Subtraction</option>
