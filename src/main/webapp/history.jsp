@@ -22,16 +22,7 @@
     </select>
     <button>History by type of operation</button>
 </form>
-<form action="/history" method="post">
-    <input type="text" name="login" placeholder="Login of user" required>
-    <button>History by login</button>
-</form>
-<form action="/history" method="post">
-    <button>The whole history</button>
-</form>
-<form action="/test" method="get">
-    <button>Back to calculation</button>
-</form>
+<input type="button" value="Back to calculation" onClick='location.href="/test"'>
 <table bgcolor="#7fffd4" border="2">
     <tr>
         <th>Number 1</th>

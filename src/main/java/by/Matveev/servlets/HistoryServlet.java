@@ -1,6 +1,7 @@
 package by.Matveev.servlets;
 
 import by.Matveev.dao.ListOperations;
+import by.Matveev.entity.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,17 +14,19 @@ import java.io.IOException;
 public class HistoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getServletContext().getRequestDispatcher("/history.jsp").forward(req, resp);
+        if(req.getParameter("name") == null) {
+            ListOperations rememberingInformation = new ListOperations();
+            req.setAttribute("list", rememberingInformation.getOperationBySession((User) req.getSession().getAttribute("user")));
+            req.getServletContext().getRequestDispatcher("/history.jsp").forward(req, resp);
+        }else{
+            doPost(req, resp);
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ListOperations rememberingInformation = new ListOperations();
-        if (req.getParameter("login") != null)
-            req.setAttribute("list", rememberingInformation.getOperationByLogin(req.getParameter("login")));
-        else if (req.getParameter("name") != null)
-            req.setAttribute("list", rememberingInformation.getOperationByNameOfFunctions(req.getParameter("name")));
-        else req.setAttribute("list", rememberingInformation.getOperations());
+        req.setAttribute("list", rememberingInformation.getOperationByNameOfFunctions(req.getParameter("name")));
         req.getServletContext().getRequestDispatcher("/history.jsp").forward(req, resp);
     }
 }

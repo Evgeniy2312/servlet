@@ -24,14 +24,7 @@
 </form>
 <p>Result : ${requestScope.operation}</p>
 <p>${requestScope.incorrect}</p>
-<form action="/reg" method="get">
-    <button>Registration</button>
-</form>
-<form action="/logout" method="get">
-    <button>Exit</button>
-</form>
-<form action="/history">
-    <button>Get history</button>
-</form>
+<input type="button" value="Exit" onClick='location.href="/main"'>
+<input type="button" value="Get history" onClick='location.href="/history"'>
 </body>
 </html>

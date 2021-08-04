@@ -28,6 +28,6 @@ public class CalculationServlet extends HttpServlet {
         function.setUser((User) req.getSession().getAttribute("user"));
         req.setAttribute("operation", function.getResult());
         new ListOperations().getOperations().add(function);
-        req.getServletContext().getRequestDispatcher("/calculation.jsp").forward(req, resp);
+        req.getServletContext().getRequestDispatcher("/ccalculation.jsp").forward(req, resp);
     }
 }

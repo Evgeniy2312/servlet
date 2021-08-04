@@ -16,17 +16,14 @@ public class ListOperations implements RememberingInformationDao {
     }
 
     @Override
-    public List<Operation> getOperationByLogin(String login) {
-        if(new ListUser().getUser().contains(new User(login))) {
-            List<Operation> operations = new ArrayList<>();
-            for (Operation operation : getOperations()) {
-                if (operation.getUser().getLogin().equals(login)) {
-                    operations.add(operation);
-                }
+    public List<Operation> getOperationBySession(User user) {
+        List<Operation> operations = new ArrayList<>();
+        for (Operation operation : getOperations()) {
+            if (operation.getUser().equals(user)) {
+                operations.add(operation);
             }
-            return operations;
         }
-        return null;
+        return operations;
     }
 
     @Override

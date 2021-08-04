@@ -22,13 +22,15 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name");
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         UserDao userDao = new ListUser();
-        if (userDao.addUser(new User(login, password))) {
-            req.setAttribute("user", Input.getMessage("User with login " + login +  " passed registration successfully"));
-        }else req.setAttribute("incorrectData", Input.getMessage("This user has already existed"));
-        req.getServletContext().getRequestDispatcher("/registration.jsp").forward(req, resp);
+        if (userDao.addUser(new User(name, login, password))) {
+            resp.sendRedirect("main");
+        }else { req.setAttribute("incorrectData", Input.getMessage("This user has already existed"));
+            req.getServletContext().getRequestDispatcher("/registration.jsp").forward(req, resp);
+        }
     }
 }
 

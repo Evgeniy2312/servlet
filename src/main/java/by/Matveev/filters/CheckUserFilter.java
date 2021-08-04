@@ -21,8 +21,7 @@ public class CheckUserFilter extends HttpFilter {
         if(req.getMethod().equals("POST")) {
             User user = (User) req.getSession().getAttribute("user");
             if (user == null || req.getSession() == null){
-                req.setAttribute("incorrect","You haven't authorized yet." );
-                req.getServletContext().getRequestDispatcher("/calculation.jsp").forward(req, res);
+                res.sendRedirect("/main");
             } else chain.doFilter(req, res);
         }
     }
