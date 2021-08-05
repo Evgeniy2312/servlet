@@ -10,8 +10,9 @@
 <head>
     <title>Title</title>
 </head>
-<body>
-<input type="button" value="Registration" onClick='location.href="/reg"'>
-<input type="button" value="Authorization" onClick='location.href="/auth"'>
+<body background="https://lh3.googleusercontent.com/proxy/RVvs7TvpcBgke0qcuiq4y3SY6oOc-uBmyrOwXFszHBFrSK0H01CVcL1m5m5y9hSEx76Oc94LrXBg74Zqw5UuZ3SFwIzanIveBR07NOgTAwfGcrsrVtHaLw">
+<h1 align="center">Main</h1>
+<p align="center"><button onclick='location.href="/reg"'>Registration</button></p>
+<p align="center"><button onclick='location.href="/auth"'>Authorization</button></p>
 </body>
 </html>

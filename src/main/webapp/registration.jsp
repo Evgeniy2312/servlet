@@ -10,13 +10,14 @@
 <head>
     <title>Title</title>
 </head>
-<body>
-<form action="/reg" method="post">
+<body background="https://bipbap.ru/wp-content/uploads/2017/04/1423036688.jpg">
+<h1 align="center" a>Registration</h1>
+<form action="/reg" method="post" align="center">
     <input type="text" name="name" placeholder="Name">
     <input type="text" name="login" placeholder="Login">
     <input type="text" name="password" placeholder="Password">
-    <button>Registration</button>
+    <button type="submit">Registration</button>
 </form>
-<p>${requestScope.incorrectData}</p>
+<p align="center">${requestScope.incorrectData}</p>
 </body>
 </html>

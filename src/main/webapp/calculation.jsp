@@ -10,8 +10,9 @@
 <head>
     <title>Calculation</title>
 </head>
-<body>
-<form action="/test" method="post">
+<body background="https://www.tripzaza.com/ru/destinations/wp-content/uploads/2018/08/shutterstock_605105897-e1534228891646.jpg">
+<h1 align="center">Calculation</h1>
+<form align="center" action="/calc" method="post">
     <input type="number" name="num1" placeholder="Number 1" required step="0.01">
     <input type="number" name="num2" placeholder="Number 2" required step="0.01">
     <select name="operation" size="?" required>
@@ -20,11 +21,11 @@
         <option value="mul">Multiplication</option>
         <option value="div">Division</option>
     </select>
-    <button>Count</button>
+    <button type="submit">Count</button>
 </form>
-<p>Result : ${requestScope.operation}</p>
-<p>${requestScope.incorrect}</p>
-<input type="button" value="Exit" onClick='location.href="/main"'>
-<input type="button" value="Get history" onClick='location.href="/history"'>
+<p align="center">Result : ${requestScope.operation}</p>
+<p align="center">${requestScope.incorrect}</p>
+<p align="center"><button onclick='location.href="/logout"'>Exit</button></p>
+<p align="center"><button onclick='location.href="/history"'>Get history</button></p>
 </body>
 </html>

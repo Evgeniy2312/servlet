@@ -19,15 +19,14 @@ public class AuthorizationServlet extends HttpServlet {
         req.getServletContext().getRequestDispatcher("/authorization.jsp").forward(req, resp);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @Override    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         UserDao userDao = new ListUser();
-        User user = new User(login,password);
-        if(userDao.getUser().contains(user)) {
+        if(userDao.getUser().contains(new User(login, password))) {
+            User user = userDao.getUser().get(userDao.getUser().indexOf(new User(login,password)));
             req.getSession().setAttribute("user", user);
-            resp.sendRedirect("/test");
+            resp.sendRedirect("/calc");
         }else {
             resp.sendRedirect("/main");
         }

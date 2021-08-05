@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet( name = "CalculationServlet", urlPatterns = "/test")
+@WebServlet( name = "CalculationServlet", urlPatterns = "/calc")
 public class CalculationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,6 +28,6 @@ public class CalculationServlet extends HttpServlet {
         function.setUser((User) req.getSession().getAttribute("user"));
         req.setAttribute("operation", function.getResult());
         new ListOperations().getOperations().add(function);
-        req.getServletContext().getRequestDispatcher("/ccalculation.jsp").forward(req, resp);
+        req.getServletContext().getRequestDispatcher("/calculation.jsp").forward(req, resp);
     }
 }
