@@ -14,7 +14,7 @@
 </head>
 <body background="https://profotovideo.ru/images/2018/03/14-oilphoto/oilphoto02.jpg">
 <h1 align="center">History</h1>
-<form action="/history" method="post" align="center">
+<form action="/history" align="center">
     <select name="name"  size="?">
         <option value="add">Addition</option>
         <option value="sub">Subtraction</option>
