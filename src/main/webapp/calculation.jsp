@@ -25,7 +25,7 @@
 </form>
 <p align="center">Result : ${requestScope.operation}</p>
 <p align="center">${requestScope.incorrect}</p>
-<p align="center"><button onclick='location.href="/logout"'>Exit</button></p>
-<p align="center"><button onclick='location.href="/history"'>Get history</button></p>
+<p align="center"><a href="/logout">Exit</a></p>
+<p align="center"><a href="/history">Get history</a></p>
 </body>
 </html>

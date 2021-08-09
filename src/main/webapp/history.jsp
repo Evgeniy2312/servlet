@@ -23,7 +23,7 @@
     </select>
     <button type="submit">History by type of operation</button>
 </form>
-<p align="center"><button onclick='location.href="/calc"'>Back to calculation</button></p>
+<p align="center"><a href="/calc">Back to calculation</a></p>
 <p align="center"><table bordercolor="blue"  bgcolor="#ffe4c4" border="2">
     <tr>
         <th>Number 1</th>
