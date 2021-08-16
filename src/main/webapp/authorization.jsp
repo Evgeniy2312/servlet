@@ -9,12 +9,13 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="calculation.css">
 </head>
 <body>
 <h1 align="center">Authorization</h1>
 <form  action="/auth" method="post" align="center" >
     <input type="text" name="login" placeholder="Login">
-    <input type="text" name="password" placeholder="Password">
+    <input type="password" name="password" placeholder="Password">
     <button type="submitw">Authorization</button>
 </form>
 </body>

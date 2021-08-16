@@ -9,8 +9,9 @@
 <html>
 <head>
     <title>Calculation</title>
+    <link rel="stylesheet" href="calculation.css">
 </head>
-<body background="https://www.tripzaza.com/ru/destinations/wp-content/uploads/2018/08/shutterstock_605105897-e1534228891646.jpg">
+<body>
 <h1 align="center">Calculation</h1>
 <form align="center" action="/calc" method="post">
     <input type="number" name="num1" placeholder="Number 1" required step="0.01">
@@ -25,7 +26,7 @@
 </form>
 <p align="center">Result : ${requestScope.operation}</p>
 <p align="center">${requestScope.incorrect}</p>
-<p align="center"><a href="/logout">Exit</a></p>
-<p align="center"><a href="/history">Get history</a></p>
+<a href="/logout">Exit</a>
+<a href="/history">Get history</a>
 </body>
 </html>

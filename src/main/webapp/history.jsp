@@ -11,37 +11,26 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="calculation.css">
 </head>
-<body background="https://profotovideo.ru/images/2018/03/14-oilphoto/oilphoto02.jpg">
+<body>
 <h1 align="center">History</h1>
 <form action="/history" align="center">
-    <select name="name"  size="?">
+    <select name="name">
+        <option selected disabled>Choose the function</option>
         <option value="add">Addition</option>
+<%--        name == value--%>
         <option value="sub">Subtraction</option>
         <option value="mul">Multiplication</option>
         <option value="div">Division</option>
     </select>
     <button type="submit">History by type of operation</button>
 </form>
-<p align="center"><a href="/calc">Back to calculation</a></p>
-<p align="center"><table bordercolor="blue"  bgcolor="#ffe4c4" border="2">
-    <tr>
-        <th>Number 1</th>
-        <th>Number 2</th>
-        <th>Operation</th>
-        <th>Name</th>
-        <th>Result</th>
-    </tr>
+<a href="/calc">Back to calculation</a>
+<ul class="my-list">
     <c:forEach var ="operations" items="${requestScope.list}">
-        <tr>
-            <td>${operations.i1}</td>
-            <td>${operations.i2}</td>
-            <td>${operations.operation}</td>
-            <td>${operations.user.name}</td>
-            <td>${operations.result}</td>
-        </tr>
+        <li class="my-item">${operations}</li>
     </c:forEach>
-</table>
-</p>
+</ul>
 </body>
 </html>

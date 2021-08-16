@@ -58,8 +58,8 @@ public class Operation {
 
     @Override
     public String toString() {
-        return "Operation{" + "number1 - " + i1 + "; number2 - " + i2 + "; operation - " + operation + "; result - "
-        + result + "; user: login - " + user.getLogin() + "}";
+        return "number1 - " + i1 + "; number2 - " + i2 + "; operation - " + operation + "; result - "
+        + result + "; name - " + user.getName();
     }
 
     @Override
