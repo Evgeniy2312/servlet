@@ -1,11 +1,21 @@
 package by.Matveev.entity;
 
+import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
-
+@Entity
+@Table( schema = "hibernate",name = "users")
 public class User {
-    public String name;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    private String name;
+
     private String login;
     private String password;
+
 
     public User(String login, String password, String name) {
         this.login = login;
@@ -13,11 +23,22 @@ public class User {
         this.name = name;
     }
 
+    public User() {
+    }
+
     public User(String login, String password) {
         this.login = login;
         this.password = password;
     }
 
+
+    public long getId() {
+        return id;
+    }
+
+    public static User returnUser(String login, String password){
+        return new User(login, password);
+    }
     public String getName() {
         return name;
     }

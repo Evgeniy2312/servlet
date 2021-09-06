@@ -1,7 +1,9 @@
 package by.Matveev.servlets;
 
 import by.Matveev.dao.ListOperations;
+import by.Matveev.dao.RememberingInformationDao;
 import by.Matveev.entity.User;
+import by.Matveev.service.ServiceFacade;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,21 +14,22 @@ import java.io.IOException;
 
 @WebServlet("/history")
 public class HistoryServlet extends HttpServlet {
+    private final ServiceFacade serviceFacade = new ServiceFacade();
+
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if(req.getParameter("name") == null) {
-            ListOperations rememberingInformation = new ListOperations();
-            req.setAttribute("list", rememberingInformation.getOperationBySession((User) req.getSession().getAttribute("user")));
+        if (req.getParameter("name") == null) {
+//            req.setAttribute("list", serviceFacade.getOperationBySession((User) req.getSession().getAttribute("user")));
             req.getServletContext().getRequestDispatcher("/history.jsp").forward(req, resp);
-        }else{
+        } else {
             doPost(req, resp);
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ListOperations rememberingInformation = new ListOperations();
-        req.setAttribute("list", rememberingInformation.getOperationByNameOfFunctions(req.getParameter("name")));
+//        req.setAttribute("list", serviceFacade.getOperationByType((User) req.getSession().getAttribute("user"), req.getParameter("name")));
         req.getServletContext().getRequestDispatcher("/history.jsp").forward(req, resp);
     }
 }

@@ -1,7 +1,10 @@
 package by.Matveev.filters;
 
 import by.Matveev.entity.User;
-import by.Matveev.service.input.Input;
+import by.Matveev.service.RegistrationService;
+import by.Matveev.service.utils.Input;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -13,6 +16,8 @@ import java.io.IOException;
 
 @WebFilter(servletNames = "CalculationServlet")
 public class CheckUserFilter extends HttpFilter {
+    private static final Logger logger = LoggerFactory.getLogger(CheckUserFilter.class);
+
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         if(req.getMethod().equals("GET")){
@@ -21,7 +26,9 @@ public class CheckUserFilter extends HttpFilter {
         if(req.getMethod().equals("POST")) {
             User user = (User) req.getSession().getAttribute("user");
             if (user == null || req.getSession() == null){
-                res.sendRedirect("/main");
+                logger.warn("User try to enter the calculate without authorization");
+                req.setAttribute("message", Input.getMessage("You haven't authorized yet"));
+                req.getServletContext().getRequestDispatcher("/calculation.jsp").forward(req, res);
             } else chain.doFilter(req, res);
         }
     }

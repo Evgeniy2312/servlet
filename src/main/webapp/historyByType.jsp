@@ -1,16 +1,15 @@
-<%@ page import="by.Matveev.entity.Operation" %>
-<%@ page import="java.util.List" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: UserOk
-  Date: 28.07.2021
-  Time: 23:41
+  Date: 04.09.2021
+  Time: 22:34
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>History by user</title>
+    <title>History by type of operation</title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -18,7 +17,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-sm-6">
-            <form action="/history2">
+            <form action="/history">
                 <div class="mb-3">
                     <label for="selectOperation" class="form-label">Select function</label>
                     <select name="name" id="selectOperation" class="form-select">
@@ -63,7 +62,7 @@
                     <li class="page-item">
                         <c:if test="${requestScope.currentPage lt requestScope.numPages}">
                     <li class="page-item">
-                        <a href="/history2?currentPage=${currentPage + 1}" class="page-link">Next</a>
+                        <a href="/history2?currentPage=${currentPage + 1}&type=${requestScope.type}" class="page-link">Next</a>
                     </li>
                     </c:if>
                     </li>
@@ -74,23 +73,3 @@
 </div>
 </body>
 </html>
-
-
-<%--<h1 align="center">History</h1>--%>
-<%--<form action="/history" align="center">--%>
-<%--    <select name="name">--%>
-<%--        <option selected disabled>Choose the function</option>--%>
-<%--        <option value="add">Addition</option>--%>
-<%--&lt;%&ndash;        name == value&ndash;%&gt;--%>
-<%--        <option value="sub">Subtraction</option>--%>
-<%--        <option value="mul">Multiplication</option>--%>
-<%--        <option value="div">Division</option>--%>
-<%--    </select>--%>
-<%--    <button type="submit">History by type of operation</button>--%>
-<%--</form>--%>
-<%--<a href="/calc">Back to calculation</a>--%>
-<%--<ul>--%>
-<%--    <c:forEach var ="operations" items="${requestScope.list}">--%>
-<%--        <li >${operations}</li>--%>
-<%--    </c:forEach>--%>
-<%--</ul>--%>

@@ -1,19 +1,48 @@
 package by.Matveev.entity;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table( schema = "hibernate", name = "operations")
 public class Operation {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     private double i1;
     private double i2;
-    private String operation;
+    private String typeOfOperation;
     private double result;
+
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="user_id")
     private User user;
 
-    public Operation(double i1, double i2, String operation, double result) {
+    public Operation(double i1, double i2, String operation, double result,User user) {
         this.i1 = i1;
         this.i2 = i2;
-        this.operation = operation;
+        this.typeOfOperation = operation;
         this.result = result;
+        this.user = user;
+    }
+
+    public Operation(double i1, double i2, String operation, User user) {
+        this.i1 = i1;
+        this.i2 = i2;
+        this.typeOfOperation = operation;
+        this.user = user;
+    }
+
+    public Operation() {
+    }
+
+    public static Operation returnOperation(double i1, double i2, String operation, User user){
+        return new Operation(i1, i2, operation, user);
+    }
+
+    public long getId() {
+        return id;
     }
 
     public double getI1() {
@@ -33,11 +62,11 @@ public class Operation {
     }
 
     public String getOperation() {
-        return operation;
+        return typeOfOperation;
     }
 
     public void setOperation(String operation) {
-        this.operation = operation;
+        this.typeOfOperation = operation;
     }
 
     public double getResult() {
@@ -58,7 +87,7 @@ public class Operation {
 
     @Override
     public String toString() {
-        return "number1 - " + i1 + "; number2 - " + i2 + "; operation - " + operation + "; result - "
+        return "number1 - " + i1 + "; number2 - " + i2 + "; operation - " + typeOfOperation + "; result - "
         + result + "; name - " + user.getName();
     }
 
@@ -67,11 +96,11 @@ public class Operation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Operation operation1 = (Operation) o;
-        return i1 == operation1.i1 && i2 == operation1.i2 && result == operation1.result && Objects.equals(operation, operation1.operation) && Objects.equals(user, operation1.user);
+        return i1 == operation1.i1 && i2 == operation1.i2 && result == operation1.result && Objects.equals(typeOfOperation, operation1.typeOfOperation) && Objects.equals(user, operation1.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(i1, i2, operation, result, user);
+        return Objects.hash(i1, i2, typeOfOperation, result, user);
     }
 }

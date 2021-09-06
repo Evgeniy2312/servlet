@@ -4,24 +4,27 @@ import by.Matveev.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class ListUser implements UserDao{
+public class ListUser implements UserDao {
 
     private static final List<User> users = new ArrayList<>();
 
 
     @Override
-    public List<User> getUser() {
+    public List<User> getUsers() {
         return users;
     }
 
     @Override
-    public boolean addUser(User user) {
-        boolean flag = false;
-        if(!getUser().contains(user)){
-            getUser().add(user);
-            flag = true;
-        }
-        return flag;
+    public void addUser(User user) {
+        getUsers().add(user);
     }
+
+    @Override
+    public void changePassword(User user, String password) {
+        user.setPassword(password);
+    }
+
+
 }

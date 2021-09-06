@@ -1,6 +1,6 @@
-package by.Matveev.service;
+package by.Matveev.service.mathoperations;
 
-import by.Matveev.service.mathoperations.*;
+import by.Matveev.service.mathoperations.operations.*;
 
 import java.util.HashMap;
 import java.util.Map;

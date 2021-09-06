@@ -3,7 +3,8 @@ package by.Matveev.servlets;
 import by.Matveev.dao.ListUser;
 import by.Matveev.dao.UserDao;
 import by.Matveev.entity.User;
-import by.Matveev.service.input.Input;
+import by.Matveev.service.ServiceFacade;
+import by.Matveev.service.utils.Input;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +15,7 @@ import java.io.IOException;
 
     @WebServlet(name = "registration", urlPatterns = "/reg")
 public class RegistrationServlet extends HttpServlet {
+        private final ServiceFacade serviceFacade = new ServiceFacade();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,12 +27,10 @@ public class RegistrationServlet extends HttpServlet {
         String name = req.getParameter("name");
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        UserDao userDao = new ListUser();
-        if (userDao.addUser(new User(login, password, name))) {
-            resp.sendRedirect("main");
-        }else { req.setAttribute("incorrectData", Input.getMessage("This user has already existed"));
-            req.getServletContext().getRequestDispatcher("/registration.jsp").forward(req, resp);
-        }
+        if (serviceFacade.registration(new User(login, password, name))) {
+            req.setAttribute("message", Input.getMessage("Registration has passed successfully "));
+        }else req.setAttribute("message", Input.getMessage("This user has already existed"));
+        req.getServletContext().getRequestDispatcher("/registration.jsp").forward(req, resp);
     }
 }
 

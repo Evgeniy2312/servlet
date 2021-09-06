@@ -2,7 +2,6 @@ package by.Matveev.dao;
 
 import by.Matveev.entity.Operation;
 import by.Matveev.entity.User;
-import by.Matveev.service.input.Input;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +12,11 @@ public class ListOperations implements RememberingInformationDao {
     @Override
     public List<Operation> getOperations() {
         return operations;
+    }
+
+    @Override
+    public void addOperation(Operation operation) {
+        getOperations().add(operation);
     }
 
     @Override
@@ -27,16 +31,15 @@ public class ListOperations implements RememberingInformationDao {
     }
 
     @Override
-    public List<Operation> getOperationByNameOfFunctions(String name) {
+    public List<Operation> getOperationByNameOfFunctions(User user, String name) {
         List<Operation> operations = new ArrayList<>();
-        if (Input.checkTypeOfCalculation(name)) {
-            for (Operation operation : getOperations()) {
+        for (Operation operation : getOperations()) {
+            if (operation.getUser().equals(user)) {
                 if (operation.getOperation().equals(name)) {
                     operations.add(operation);
                 }
             }
-            return operations;
         }
-        return null;
+        return operations;
     }
 }

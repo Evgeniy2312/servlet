@@ -1,7 +1,5 @@
 package by.Matveev.servlets;
 
-import by.Matveev.service.input.Input;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +12,6 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().invalidate();
-        resp.sendRedirect("/main");
+        resp.sendRedirect("/home");
     }
 }
