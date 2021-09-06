@@ -15,7 +15,7 @@ public class Operation {
     private String typeOfOperation;
     private double result;
 
-    @OneToOne(fetch=FetchType.LAZY)
+    @OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="user_id")
     private User user;
 
