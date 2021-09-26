@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/history2")
+@WebServlet( name = "HistoryServlet", urlPatterns = "/history2")
 public class HistoryServlet2 extends HttpServlet {
     private final ServiceFacade serviceFacade = new ServiceFacade();
     private int numValues = 5;
@@ -51,10 +51,10 @@ public class HistoryServlet2 extends HttpServlet {
                 (User)req.getSession().getAttribute("user"),
                 type);
         numPages = Dependencies.historyService2.getSizeListForResp();
-        req.setAttribute("currentList", operations);
         req.setAttribute("numPages", numPages);
         req.setAttribute("currentPage", currentPage);
         req.setAttribute("type", type);
-        req.getServletContext().getRequestDispatcher("/historyByType").forward(req, resp);
+        req.setAttribute("currentList", operations);
+        req.getServletContext().getRequestDispatcher("/historyByType.jsp").forward(req, resp);
     }
 }

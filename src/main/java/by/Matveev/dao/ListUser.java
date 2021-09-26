@@ -18,12 +18,29 @@ public class ListUser implements UserDao {
 
     @Override
     public void addUser(User user) {
-        getUsers().add(user);
+        users.add(new User(users.size() + 1, user.getName(), user.getLogin(), user.getPassword()));
     }
 
     @Override
     public void changePassword(User user, String password) {
-        user.setPassword(password);
+        User user1 = users.get(users.indexOf(user));
+        user1.setPassword(password);
+    }
+
+    @Override
+    public boolean isExist(User user) {
+        return users.contains(user);
+    }
+
+    @Override
+    public User getUserByLogin(String login) {
+        User user = new User();
+        for(User user1 : users){
+            if(user1.getLogin().equals(login)){
+                user = user1;
+            }
+        }
+        return user;
     }
 
 

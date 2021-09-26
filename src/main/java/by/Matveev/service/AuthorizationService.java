@@ -12,14 +12,14 @@ public class AuthorizationService {
     private static final Logger logger = LoggerFactory.getLogger(AuthorizationService.class);
 
     public AuthorizationService(HibernateUser hibernateUser){
-        this.userDao = hibernateUser;
+        this.userDao = hibernateUser ;
     }
 
     public Optional<User> logIn(User user) {
-        if (userDao.getUsers().contains(user)) {
-            User user1 = userDao.getUsers().get(userDao.getUsers().indexOf(user));
+        if (userDao.isExist(user)){
+            User user1 = userDao.getUserByLogin(user.getLogin());
             logger.info("User with name {} authorized ", user1.getName());
-            return Optional.ofNullable(user1);
+            return Optional.of(user1);
         }else {
             logger.warn("User with login {} try to authorized without registration",user.getLogin() );
             return Optional.empty();

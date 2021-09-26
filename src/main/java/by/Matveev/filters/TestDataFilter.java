@@ -18,13 +18,29 @@ public class TestDataFilter extends HttpFilter {
             chain.doFilter(req, res);
         }
         if (req.getMethod().equals("POST")) {
+            boolean flag = true;
             String[] strings = req.getParameterValues("numbers");
-            Double i1 = Double.parseDouble(strings[1]);
+            Double i2 = Double.parseDouble(strings[1]);
             String operation = req.getParameter("type");
-            if (Input.divZero(i1, operation)) {
+            if (Input.divZero(i2, operation)) {
+                flag = false;
                 req.setAttribute("message", Input.getMessage("Division by zero is prohibited"));
-                req.getServletContext().getRequestDispatcher("/calculation.jsp").forward(req, res);
-            } else chain.doFilter(req, res);
+            }
+            if(!Input.getDouble(strings[0])){
+                flag = false;
+                req.setAttribute("message", Input.getMessage("Incorrectly enter the first number"));
+            }
+            if(!Input.checkTypeOfCalculation(operation)){
+                flag = false;
+                req.setAttribute("message", Input.getMessage("Incorrectly enter the type of operation"));
+            }
+            if(!Input.getDouble(strings[1])){
+                flag = false;
+                req.setAttribute("message", Input.getMessage("Incorrectly enter the second number"));
+            }
+            if(flag) chain.doFilter(req, res);
+            req.getServletContext().getRequestDispatcher("/calculation.jsp").forward(req, res);
+
         }
     }
 }

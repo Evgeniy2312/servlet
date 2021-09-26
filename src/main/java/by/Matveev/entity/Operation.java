@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@NamedQueries({@NamedQuery(name = "Operation.allOperations", query = "From Operation"),
+        @NamedQuery(name = "Operation.allOperationsByUser", query = "FROM Operation  WHERE user =: user"),
+        @NamedQuery(name = "Operation.allOperationsByTypeOfOperation", query = "FROM Operation  WHERE user =: user AND typeOfOperation =: type ")
+})
 @Table( schema = "hibernate", name = "operations")
 public class Operation {
     @Id
@@ -14,9 +18,8 @@ public class Operation {
     private double i2;
     private String typeOfOperation;
     private double result;
-
-    @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="user_id")
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Operation(double i1, double i2, String operation, double result,User user) {

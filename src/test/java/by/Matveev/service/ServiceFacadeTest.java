@@ -66,31 +66,31 @@ class ServiceFacadeTest {
         assertEquals(Optional.empty(), serviceFacade.authorization(user));
     }
 
-    @Order(3)
-    @DisplayName("testing registration method to the true")
-    @ParameterizedTest
-    @CsvSource({"ewer34@gmail.com, 1234",
-            "Evgen1234-23_204@ges, 12wq4 "}
-    )
-    void registrationTrueTest(@AggregateWith(UserAggregator.class) User user) {
-        assertAll("user",
-                () -> assertNotNull(user),
-                () -> assertTrue( serviceFacade.registration(user))
-        );
-    }
+//    @Order(3)
+//    @DisplayName("testing registration method to the true")
+//    @ParameterizedTest
+//    @CsvSource({"ewer34@gmail.com, 1234",
+//            "Evgen1234-23_204@ges, 12wq4 "}
+//    )
+//    void registrationTrueTest(@AggregateWith(UserAggregator.class) User user) {
+//        assertAll("user",
+//                () -> assertNotNull(user),
+//                () -> assertTrue( serviceFacade.registration(user))
+//        );
+//    }
 
-    @Order(4)
-    @DisplayName("testing registration method to the false")
-    @ParameterizedTest
-    @CsvSource({"ewer3@gmail.com, 123",
-            "Evgen12-23_2003@ges, 1234 "}
-    )
-    void registrationFalseTest(@AggregateWith(UserAggregator.class) User user) {
-        assertAll("user",
-                () -> assertNotNull(user),
-                () -> assertFalse( serviceFacade.registration(user))
-                );
-    }
+//    @Order(4)
+//    @DisplayName("testing registration method to the false")
+//    @ParameterizedTest
+//    @CsvSource({"ewer3@gmail.com, 123",
+//            "Evgen12-23_2003@ges, 1234 "}
+//    )
+////    void registrationFalseTest(@AggregateWith(UserAggregator.class) User user) {
+////        assertAll("user",
+////                () -> assertNotNull(user),
+////                () -> assertFalse( serviceFacade.registration(user))
+////                );
+////    }
 
     @Order(6)
     @DisplayName("test changePassword method to the true")

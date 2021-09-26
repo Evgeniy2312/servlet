@@ -42,30 +42,6 @@
         </div>
     </div>
 </div>
-<%--<div class="container">--%>
-<%--    <div class="row justify-content-center">--%>
-<%--        <div class="col-sm-4">--%>
-<%--            <form action="/auth " method="post">--%>
-<%--                <div class="mb-3">--%>
-<%--                    <label for="exampleInputEmail" class="form-label">Login</label>--%>
-<%--                    <input required name="login" type="email" class="form-control" id="exampleInputEmail"--%>
-<%--                           aria-describedby="emailHelp">--%>
-<%--                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>--%>
-<%--                </div>--%>
-<%--                <div class="mb-3">--%>
-<%--                    <label for="exampleInputPassword" class="form-label">Password</label>--%>
-<%--                    <input required name="password" type="password" class="form-control" id="exampleInputPassword">--%>
-<%--                </div>--%>
-<%--                <button type="submit" class="btn btn-primary">Submit</button>--%>
-<%--            </form>--%>
-<%--            <c:if test="${requestScope.message != null}">--%>
-<%--                <div class="alert alert-primary" role="alert">--%>
-<%--                        ${requestScope.message}--%>
-<%--                </div>--%>
-<%--            </c:if>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
 </body>
 </html>
 

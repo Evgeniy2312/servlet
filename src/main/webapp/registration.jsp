@@ -17,7 +17,7 @@
     <div class="row justify-content-center">
         <div class="col-sm-4">
             <main class="form-signin">
-                <form action="/reg " method="post">
+                <form action="/reg" method="post">
                     <i style="width:20px; height:22px" class="fas fa-calculator"></i>
                     <h1 class="h3 mb-3 fw-normal">Please log</h1>
                     <div class="form-floating">
@@ -34,6 +34,25 @@
                         <input required name="password" type="password" class="form-control" id="floatingPassword"
                                placeholder="Password">
                         <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="form-floating">
+                        <input required name="number" type="number" class="form-control" id="floatingNumber"
+                               placeholder="Number of telephone">
+                        <label for="floatingNumber">Number of telephone</label>
+                    </div>
+                    <div class="form-floating">
+                        <input required name="home" type="number" class="form-control" id="floatingHome"
+                               placeholder="Number of home">
+                        <label for="floatingHome">Number of home</label>
+                    </div>
+                    <div class="form-floating">
+                        <input required name="street" type="text" class="form-control" id="floatingStreet"
+                               placeholder="Name of the street">
+                        <label for="floatingStreet">Name of the street</label>
+                    </div>
+                    <div class="form-floating">
+                        <input required name="isPrimary" type="hidden" class="form-control"
+                               placeholder="Name of the street">
                     </div>
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Log</button>
                 </form>

@@ -2,7 +2,7 @@ package by.Matveev.service;
 
 import by.Matveev.dao.HibernateOperations;
 import by.Matveev.dao.ListOperations;
-import by.Matveev.dao.MySqlOperationsDao;
+import by.Matveev.dao.MySqlOperationsImpl;
 import by.Matveev.dao.RememberingInformationDao;
 import by.Matveev.entity.Operation;
 import org.slf4j.Logger;

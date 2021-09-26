@@ -2,6 +2,8 @@ package by.Matveev.servlets;
 
 import by.Matveev.dao.ListUser;
 import by.Matveev.dao.UserDao;
+import by.Matveev.entity.Address;
+import by.Matveev.entity.Telephone;
 import by.Matveev.entity.User;
 import by.Matveev.service.ServiceFacade;
 import by.Matveev.service.utils.Input;
@@ -27,9 +29,16 @@ public class RegistrationServlet extends HttpServlet {
         String name = req.getParameter("name");
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        if (serviceFacade.registration(new User(login, password, name))) {
+        long number = Long.parseLong(req.getParameter("number"));
+        int numberOfHome = Integer.parseInt(req.getParameter("home"));
+        String street = req.getParameter("street");
+        User user = new User(login, password, name);
+        if (serviceFacade.registration(user)) {
+            User userForInfo = serviceFacade.getByLogin(user.getLogin());
+            serviceFacade.addTelephone(new Telephone(true, number, userForInfo));
+            serviceFacade.addAddress(new Address(true, numberOfHome, street,userForInfo));
             req.setAttribute("message", Input.getMessage("Registration has passed successfully "));
-        }else req.setAttribute("message", Input.getMessage("This user has already existed"));
+        } else req.setAttribute("message", Input.getMessage("Invalid in registration"));
         req.getServletContext().getRequestDispatcher("/registration.jsp").forward(req, resp);
     }
 }

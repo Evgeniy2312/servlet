@@ -1,7 +1,9 @@
 package by.Matveev.service.utils;
 
 
+import by.Matveev.entity.Address;
 import by.Matveev.entity.Operation;
+import by.Matveev.entity.Telephone;
 import by.Matveev.entity.User;
 
 import org.hibernate.HibernateException;
@@ -32,6 +34,8 @@ public class HibernateUtil {
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(User.class);
                 configuration.addAnnotatedClass(Operation.class);
+                configuration.addAnnotatedClass(Address.class);
+                configuration.addAnnotatedClass(Telephone.class);
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry);

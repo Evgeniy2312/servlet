@@ -1,6 +1,8 @@
 package by.Matveev.service;
 
 import by.Matveev.dao.HibernateUser;
+import by.Matveev.dao.ListUser;
+import by.Matveev.dao.MySqlUserImpl;
 import by.Matveev.dao.UserDao;
 import by.Matveev.entity.User;
 import org.slf4j.Logger;
@@ -14,8 +16,11 @@ public class ChangePasswordService{
         this.userDao = hibernateUser;
     }
 
-    public void changePassword(User user, String password){
-        userDao.changePassword(user, password);
-        logger.info("User with name {} changed password", user.getName());
+    public boolean changePassword(User user, String password){
+        if(userDao.isExist(user)) {
+            userDao.changePassword(user, password);
+            logger.info("User with name {} changed password", user.getName());
+            return true;
+        }else return false;
     }
 }

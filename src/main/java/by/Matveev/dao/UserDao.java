@@ -9,4 +9,6 @@ public interface UserDao {
     public List<User> getUsers();
     void addUser(User user);
     void changePassword(User user, String password);
+    boolean isExist(User user);
+    User getUserByLogin(String login);
 }

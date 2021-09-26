@@ -34,9 +34,9 @@
             </ul>
             <c:if test="${sessionScope.user == null}">
                 <div class="text-end">
-                    <button type="button" onClick="location.href='/reg'" class="btn btn-outline-light me-2">Login
+                    <button type="button" onClick="location.href='/reg'" class="btn btn-outline-light me-2">Sign-up
                     </button>
-                    <button type="button" onClick="location.href='/auth'" class="btn btn-warning">Sign-up</button>
+                    <button type="button" onClick="location.href='/auth'" class="btn btn-warning">Login</button>
                 </div>
             </c:if>
             <c:if test="${sessionScope.user != null}">
@@ -51,6 +51,16 @@
                             <li>
                                 <button class="dropdown-item" type="button" onClick="location.href='/change'">Change
                                     password
+                                </button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" type="button" onClick="location.href='/addresses'">Edit
+                                    address
+                                </button>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" type="button" onClick="location.href='/telephones'">Edit
+                                    telephone
                                 </button>
                             </li>
                             <li>

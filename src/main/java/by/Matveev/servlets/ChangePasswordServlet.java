@@ -24,8 +24,10 @@ public class ChangePasswordServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String password = req.getParameter("password");
         User user = (User) req.getSession().getAttribute("user");
-        serviceFacade.changePassword(user, password);
-        req.setAttribute("message", "Your password successfully changed!");
+        if(serviceFacade.changePassword(user, password)){
+            req.setAttribute("message", "Your password successfully changed!");
+        }else  req.setAttribute("message", "Error in the changing of password!");
+
         req.getServletContext().getRequestDispatcher("/change.jsp").forward(req, resp);
     }
 }

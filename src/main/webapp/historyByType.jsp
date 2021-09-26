@@ -17,7 +17,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-sm-6">
-            <form action="/history">
+            <form action="/history2">
                 <div class="mb-3">
                     <label for="selectOperation" class="form-label">Select function</label>
                     <select name="name" id="selectOperation" class="form-select">
@@ -42,7 +42,7 @@
                 <ul class="pagination justify-content-center">
                     <li class="page-item">
                         <c:if test="${requestScope.currentPage != 1}">
-                            <a class="page-link" href="/history2?currentPage=${requestScope.currentPage - 1}">Previous</a>
+                            <a class="page-link" href="/history2?currentPage=${requestScope.currentPage - 1}&name=${requestScope.type}">Previous</a>
                         </c:if>
                     </li>
                     <c:forEach begin="1" end="${requestScope.numPages}" var="i">
@@ -53,7 +53,7 @@
                         </li>
                     </c:when>
                     <c:otherwise>
-                    <li class="page-item"><a href="/history2?currentPage=${i}"
+                    <li class="page-item"><a href="/history2?currentPage=${i}&name=${requestScope.type}"
                                              class="page-link">${i}</a>
                         </c:otherwise>
                         </c:choose>
@@ -62,7 +62,7 @@
                     <li class="page-item">
                         <c:if test="${requestScope.currentPage lt requestScope.numPages}">
                     <li class="page-item">
-                        <a href="/history2?currentPage=${currentPage + 1}&type=${requestScope.type}" class="page-link">Next</a>
+                        <a href="/history2?currentPage=${currentPage + 1}&name=${requestScope.type}" class="page-link">Next</a>
                     </li>
                     </c:if>
                     </li>

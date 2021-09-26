@@ -1,6 +1,7 @@
 package by.Matveev.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 @Entity
@@ -12,9 +13,9 @@ public class User {
     private long id;
 
     private String name;
-
     private String login;
     private String password;
+
 
 
     public User(String login, String password, String name) {
@@ -31,14 +32,17 @@ public class User {
         this.password = password;
     }
 
+    public User(long id, String name, String login, String password) {
+        this.id = id;
+        this.name = name;
+        this.login = login;
+        this.password = password;
+    }
 
     public long getId() {
         return id;
     }
 
-    public static User returnUser(String login, String password){
-        return new User(login, password);
-    }
     public String getName() {
         return name;
     }
@@ -61,6 +65,10 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Override

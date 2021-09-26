@@ -1,9 +1,8 @@
 package by.Matveev.service;
 
-import by.Matveev.dao.HibernateUser;
-import by.Matveev.dao.ListUser;
-import by.Matveev.dao.MySqlUserDao;
-import by.Matveev.dao.UserDao;
+import by.Matveev.dao.*;
+import by.Matveev.entity.Address;
+import by.Matveev.entity.Telephone;
 import by.Matveev.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +17,7 @@ public class RegistrationService {
     }
 
     public boolean addUser(User user) {
-        if (!userDao.getUsers().contains(user)) {
+        if (!userDao.isExist(user)){
             userDao.addUser(user);
             logger.info("User with name {} created", user.getName());
             return true;

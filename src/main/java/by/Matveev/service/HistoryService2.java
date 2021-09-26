@@ -2,6 +2,7 @@ package by.Matveev.service;
 
 import by.Matveev.dao.HibernateOperations;
 import by.Matveev.dao.ListOperations;
+import by.Matveev.dao.MySqlOperationsImpl;
 import by.Matveev.dao.RememberingInformationDao;
 import by.Matveev.entity.Operation;
 import by.Matveev.entity.User;
@@ -14,7 +15,7 @@ public class HistoryService2 {
     private RememberingInformationDao rememberingInformationDao;
     private int sizeListForResp;
     public HistoryService2(HibernateOperations hibernateOperations){
-        this.rememberingInformationDao = hibernateOperations;
+        this.rememberingInformationDao = hibernateOperations ;
     }
 
     public List<Operation> listOperationBySession(int currentPage, int numValues, User user){
